@@ -117,6 +117,23 @@ func main() {
 	fmt.Println(listatareas.CrearTarea("lavar"))
 	fmt.Println(listatareas.CrearTarea("estudiar"))
 	listatareas.Listar()
-	fmt.Println(listatareas.CompletarTarea(1))
-	fmt.Println(listatareas.EliminarPorIndice(1))
+	completarTarea := listatareas.CompletarTarea(1)
+	if completarTarea == nil {
+		fmt.Println("tarea completada")
+	}
+
+	eliminarTarea := listatareas.EliminarPorIndice(1)
+
+	if eliminarTarea == nil {
+		fmt.Println("tarea eliminada")
+	}
+
+	listatareas.CargarDesdeArchivo("tareas.json")
+
+	listatareas.CrearTarea("comer")
+	listatareas.CrearTarea("aspirar")
+
+	listatareas.GuardarEnArchivo("tareas.json")
+
+	listatareas.Listar()
 }

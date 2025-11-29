@@ -1,8 +1,10 @@
 package listatareas
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
+	"os"
 )
 
 type Tarea struct {
@@ -47,4 +49,22 @@ func EliminarPorIndice(i int) error {
 
 	tareas = append(tareas[:i], tareas[i+1:]...)
 	return nil
+}
+
+func GuardarEnArchivo(ruta string) error {
+	data, err := json.MarshalIndent(tareas, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(ruta, data, 0644)
+}
+
+func CargarDesdeArchivo(ruta string) error {
+	data, err := os.ReadFile(ruta)
+	if err != nil {
+		return err
+	}
+
+	return json.Unmarshal(data, &tareas)
 }
