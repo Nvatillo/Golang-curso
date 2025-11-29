@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang-curso/calculadora"
 	"golang-curso/condicionales"
+	listatareas "golang-curso/lista-tareas"
 )
 
 func main() {
@@ -105,7 +106,7 @@ func main() {
 	}
 
 	condicionales.CalcularMadurez(13)
-	resultado, err := calculadora.Calcular(1, 0, "dividir")
+	resultado, err := calculadora.Calcular(1, 1, "dividir")
 
 	if err != nil {
 		fmt.Println("Ocurrió un error:", err)
@@ -113,4 +114,9 @@ func main() {
 	}
 	fmt.Println(resultado)
 
+	fmt.Println(listatareas.CrearTarea("lavar"))
+	fmt.Println(listatareas.CrearTarea("estudiar"))
+	listatareas.Listar()
+	fmt.Println(listatareas.CompletarTarea(1))
+	fmt.Println(listatareas.EliminarPorIndice(1))
 }
