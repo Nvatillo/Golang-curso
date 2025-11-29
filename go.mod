@@ -1,3 +1,3 @@
-module curso_go/v2
+module golang-curso
 
 go 1.25.4

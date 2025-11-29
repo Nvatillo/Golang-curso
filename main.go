@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"golang-curso/calculadora"
+	"golang-curso/condicionales"
+)
 
 func main() {
 	nombre := "Carlos"
@@ -99,5 +103,14 @@ func main() {
 	for nombre, edad := range edades {
 		fmt.Println(nombre, edad)
 	}
+
+	condicionales.CalcularMadurez(13)
+	resultado, err := calculadora.Calcular(1, 0, "dividir")
+
+	if err != nil {
+		fmt.Println("Ocurrió un error:", err)
+		return
+	}
+	fmt.Println(resultado)
 
 }
